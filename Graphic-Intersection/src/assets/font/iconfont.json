@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "983761",
+      "name": "撤销",
+      "font_class": "weibiaoti545",
+      "unicode": "e631",
+      "unicode_decimal": 58929
+    },
+    {
+      "icon_id": "10048839",
+      "name": "选择",
+      "font_class": "xuanze",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "30242234",
+      "name": "画圆",
+      "font_class": "huayuan",
+      "unicode": "e705",
+      "unicode_decimal": 59141
+    },
+    {
+      "icon_id": "36571796",
+      "name": "画多边形",
+      "font_class": "huaduobianxing",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "42529817",
+      "name": "线段",
+      "font_class": "xianduan",
+      "unicode": "e6ab",
+      "unicode_decimal": 59051
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@7.1.0/turf.min.js"></script>
+<body>
+  <canvas id="canvas" width="1000" height="800"></canvas>
+</body>
+<script>
+  const linePoints = [[10, 10], [100, 100]]
+  const polygonPoints = [[20, 0], [80, 0], [50, 50], [20, 0]]
+  const circleCenterPoint = [80, 80]
+  const circleR = 10
+
+  const circlePoints = (center, r, steps = 64) => {
+    return Array.from({ length: steps }).map((_, i) => {
+      const deg = Math.PI * 2 / 360 * i * (360 / steps)
+      return [center[0] + Math.sin(deg) * r, center[1] - Math.cos(deg) * r, ]
+    })
+  }
+
+  // const intersection2 = turf.lineIntersect(line, circle);
+
+  const canvas = document.getElementById('canvas')
+  const ctx = canvas.getContext('2d')
+
+  const drawLine = (linePoints, ctx) => {
+    ctx.save()
+    ctx.moveTo(linePoints[0][0], linePoints[0][1])
+    ctx.lineTo(linePoints[1][0], linePoints[1][1])
+    ctx.stroke()
+    ctx.restore()
+    const line = turf.lineString([linePoints[0], linePoints[1]])
+    return line
+  }
+
+  const drawCircle = (center, r, ctx, steps = 64) => {
+    let points = circlePoints(center, r, steps)
+    points = [...points, points[0]]
+    drawPolygon(points, ctx)
+    const circle = turf.polygon([points])
+    return circle
+  }
+
+  const drawPolygon = (points, ctx) => {
+    ctx.save()
+    points.forEach(([x, y], i) => {
+      if (i == 0) {
+        ctx.moveTo(x, y)
+      } else {
+        ctx.lineTo(x, y)
+      }
+      ctx.stroke()
+    })
+    ctx.restore()
+    const polygon = turf.polygon([points])
+    return polygon
+  }
+
+  if (ctx) {
+    const line = drawLine(linePoints, ctx)
+    const circle = drawCircle(circleCenterPoint, circleR, ctx)
+    const polygon = drawPolygon(polygonPoints)
+
+    intersection2.features.forEach(item => {
+      const [x, y] = item.geometry.coordinates
+      ctx.save()
+      ctx.beginPath()
+      ctx.arc(x, y, 5, 0, Math.PI * 2)
+      ctx.strokeStyle = 'blue'
+      ctx.stroke()
+      ctx.restore()
+    })
+  }
+</script>
+</html>
