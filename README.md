@@ -19,7 +19,7 @@ sudo npm install -g @vue/cli
 6. 运行Graphic-Intersection项目
 ```
 cd Graphic-Intersection
-npm run serve
+npm run dev
 ```
 ### Linux/Windows系统 安装Vue3环境
 由于本人设备系统是MacOS系统，所以无法实操Linux/Window系统配置Vue3。详细操作可见[Microsoft 指南](https://learn.microsoft.com/zh-cn/windows/dev-environment/javascript/vue-on-wsl)。
